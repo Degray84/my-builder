@@ -1,7 +1,4 @@
-(function() {
-  'use strict';
+import test from './modules/_test';
 
-  setTimeout(function() {
-    document.querySelector('.greating_picture').classList.add('m--show');
-  }, 1000);
-})();
+console.log("Привет, это app.js console.log");
+test();

@@ -15,7 +15,7 @@ global.$ = {
     gp: require('gulp-load-plugins')()
 };
 
-$.path.task.forEach(function(taskPath) {
+$.path.task.forEach(function (taskPath) {
     require(taskPath)();
 });
 
@@ -35,5 +35,19 @@ $.gulp.task('default', $.gulp.series(
     $.gulp.parallel(
         'watch',
         'serve'
+    )
+));
+$.gulp.task('build', $.gulp.series(
+    'clean',
+    $.gulp.parallel(
+        'sass',
+        'pug',
+        'js:foundation',
+        'js:process',
+        'copy:image',
+        'copy:fonts',
+        'css:foundation',
+        'sprite:smith',
+        'sprite:svg'
     )
 ));
