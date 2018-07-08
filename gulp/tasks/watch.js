@@ -5,5 +5,8 @@ module.exports = function() {
         $.gulp.watch('./source/js/**/*.js', $.gulp.series('js:process'));
         $.gulp.watch('./source/style/**/*.scss', $.gulp.series('sass'));
         $.gulp.watch('./source/template/**/*.pug', $.gulp.series('pug'));
+        $.gulp.watch('./source/img/**/*.*', $.gulp.series('copy:image'));
+        $.gulp.watch('./source/sprites/{*.png,*.gif}', $.gulp.series('sprite:smith'));
+        $.gulp.watch('./source/fonts/**/*.*', $.gulp.series('copy:fonts'));
     });
 };

@@ -22,15 +22,16 @@ $.path.task.forEach(function (taskPath) {
 $.gulp.task('default', $.gulp.series(
     'clean',
     $.gulp.parallel(
+        'copy:image',
+        'copy:fonts',
+        'sprite:smith'
+    ),
+    $.gulp.parallel(
         'sass',
         'pug',
         'js:foundation',
         'js:process',
-        'copy:image',
-        'copy:fonts',
-        'css:foundation',
-        'sprite:smith',
-        'sprite:svg'
+        'css:foundation'
     ),
     $.gulp.parallel(
         'watch',
@@ -40,14 +41,33 @@ $.gulp.task('default', $.gulp.series(
 $.gulp.task('build', $.gulp.series(
     'clean',
     $.gulp.parallel(
+        'copy:image',
+        'copy:fonts',
+        'sprite:smith'
+    ),
+    $.gulp.parallel(
         'sass',
         'pug',
         'js:foundation',
         'js:process',
-        'copy:image',
-        'copy:fonts',
-        'css:foundation',
-        'sprite:smith',
-        'sprite:svg'
+        'css:foundation'
     )
+));
+$.gulp.task('host', $.gulp.series(
+    'clean',
+    'sass',
+    'pug',
+    'js:foundation',
+    'js:process',
+    'copy:image',
+    'copy:fonts',
+    'css:foundation',
+    'sprite:smith',
+    'host',
+    'mobile',
+    'desktop'
+));
+$.gulp.task('psi', $.gulp.series(
+    'mobile',
+    'desktop'
 ));
